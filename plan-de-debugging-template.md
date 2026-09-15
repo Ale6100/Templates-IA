@@ -28,7 +28,9 @@ Este documento es una **bitácora viva** de una investigación en curso, no un r
 
 **Ninguna hipótesis descartada se borra**: se tacha (`~~hipótesis~~`) dejando anotado por qué se descartó y con qué evidencia — así no se vuelve a investigar por error el mismo camino muerto en una sesión futura, ni se repite un razonamiento ya refutado.
 
-**El archivo se actualiza al toque**: en cuanto se confirma o se descarta una hipótesis, se edita el documento en ese mismo momento — no se deja para el final de la sesión.
+**Obligación proactiva de edición de esta bitácora**: en cuanto se recolecte evidencia, se confirme o descarte una hipótesis, o se avance de fase, **actualizá este archivo directamente en esa misma iteración usando tus herramientas de edición, sin esperar a que el usuario te lo pida ni pedirle confirmación previa**. NO alcanza con solo avisarlo o comentarlo en tu respuesta: tu deber es plasmar el cambio en el documento.
+
+**Checklist obligatorio de cierre de turno**: antes de dar por terminada tu respuesta en cualquier interacción de debugging, preguntate: *¿Se sumó evidencia, se confirmó/descartó una hipótesis, cambió el estado o se implementó un arreglo?* Si la respuesta es sí, **editá este archivo de inmediato antes de responder**.
 
 **Este documento no es la fuente de la verdad**: si algo escrito acá (una hipótesis ya "confirmada" de una sesión anterior, por ejemplo) contradice lo que se está viendo ahora en el código o en la ejecución real, gana lo real — se corrige el documento, no se fuerza que la realidad encaje con lo ya escrito.
 
@@ -87,9 +89,10 @@ Este documento es una **bitácora viva** de una investigación en curso, no un r
 ## Causa raíz y arreglo
 
 1. Con la causa ya confirmada por evidencia (no antes), diseñar el arreglo — el más simple y directo que resuelva la causa real, no el síntoma.
-2. Aplicarlo y **volver a correr exactamente los pasos de reproducción** de "El caso" — el bug tiene que dejar de pasar con el mismo procedimiento que antes lo reproducía.
-3. Revisar si el arreglo puede afectar algo más (regresiones) — no darlo por seguro solo porque el caso puntual ya funciona.
-4. Cerrar con una explicación breve de **por qué pasaba** (la causa raíz, en criollo) y, si aplica, si el mismo error podría estar repetido en otro lugar parecido del código — vale la pena decirlo aunque no se pida.
+2. **Código autoexplicativo (prohibición de comentarios generados por IA)**: al implementar el arreglo o los tests de reproducción, no agregar comentarios narrativos en el código nuevo o modificado (ej. notas explicando el bugfix o narrando la lógica condicional). La claridad debe surgir de nombres descriptivos, buen tipado y estructura modular. La explicación técnica va a esta bitácora y en la respuesta al usuario, nunca ensuciando el código fuente. Preservar siempre intactos los comentarios preexistentes en el repositorio.
+3. Aplicarlo y **volver a correr exactamente los pasos de reproducción** de "El caso" — el bug tiene que dejar de pasar con el mismo procedimiento que antes lo reproducía.
+4. Revisar si el arreglo puede afectar algo más (regresiones) — no darlo por seguro solo porque el caso puntual ya funciona. Si el arreglo modificó configuración, dependencias, variables de entorno o comportamiento documentado, **actualizá el `README.md` del proyecto directamente en esa misma iteración**.
+5. Cerrar con una explicación breve de **por qué pasaba** (la causa raíz, en criollo) y, si aplica, si el mismo error podría estar repetido en otro lugar parecido del código — vale la pena decirlo aunque no se pida.
 
 **Checkpoint final**: el bug reproducido en la Fase 0 ya no ocurre con el arreglo aplicado, la causa raíz quedó explicada con evidencia (no con una suposición), y se dejó constancia de si hay riesgo de que el mismo problema exista en otro lado.
 

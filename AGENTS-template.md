@@ -10,7 +10,8 @@ El **README.md es la documentación única** del proyecto: sirve tanto para huma
 
 - Al empezar una tarea, leé el README para entender el contexto del proyecto antes de tocar código.
 - El README debe estar **muy bien detallado**: cuanto más completo y preciso, mejor fuente de contexto será (aunque el código siempre manda sobre él).
-- Cuando un cambio afecte cualquier cosa que documente el README (instalación, scripts, variables de entorno, arquitectura, endpoints, estructura de carpetas, decisiones de diseño, etc.), actualizá el README en la misma iteración, sin que se pida explícitamente.
+- **Obligación proactiva de edición del README**: cuando un cambio afecte cualquier cosa que documente el README (instalación, scripts, variables de entorno, arquitectura, endpoints, estructura de carpetas, conteo de archivos, permisos, decisiones de diseño, etc.) o detectes cualquier discrepancia con la realidad del código, **actualizá el README.md directamente en esa misma iteración usando tus herramientas de edición, sin esperar a que el usuario te lo pida ni pedirle confirmación previa**. NO alcanza con solo avisarlo o mencionarlo en tu reporte: tu deber es aplicar el cambio en el archivo `README.md`.
+- **Checklist obligatorio de cierre de turno**: antes de dar por terminada tu respuesta en cualquier interacción donde se haya tocado, migrado o analizado código, preguntate: *¿Cambiaron archivos, cantidades, tipos, endpoints, rutas o funcionalidades documentadas en el README?* Si la respuesta es sí, **editá el `README.md` de inmediato antes de responder**.
 - No agregues al README nada que no puedas verificar en el código.
 - El README puede incluir detalles internos del desarrollo sin censurarlos. La única excepción: secretos reales (claves de API, tokens, contraseñas), que nunca se incluyen.
 - Evitá afirmaciones perecederas ("en breve", "por ahora", "actualmente") tanto en este archivo como en el README: quedan viejas y dependen de que alguien se acuerde de actualizarlas. Escribí solo lo que siga siendo cierto con el tiempo.
@@ -28,6 +29,15 @@ La fuente de la verdad es **siempre el código**. El README (y este mismo archiv
 
 No completes con suposiciones lo que no esté respaldado por el código o por una inferencia razonable y explícita a partir de él. Si no podés determinar algo leyendo el código (por ejemplo, *por qué* se tomó una decisión de diseño puntual, o una regla de negocio que solo vive en la cabeza de alguien del equipo), decilo explícitamente como una zona gris o un supuesto a confirmar — nunca lo presentes como un hecho, ni en el README, ni explicándoselo al usuario.
 
+## Código autoexplicativo (prohibición de comentarios generados por IA)
+
+El código fuente debe ser **autoexplicativo** por su propia claridad, estructura y forma de nombrar variables, constantes y funciones.
+
+- **Prohibido agregar comentarios nuevos**: La IA no debe escribir comentarios explicativos en el código nuevo o modificado (ej. notas que narren qué hace una condición, un mapeo o un hook).
+- **Código autoexplicativo**: La legibilidad y el propósito de la lógica deben quedar claros a través de nombres descriptivos e intencionales de variables, constantes y funciones, junto con un diseño de tipos y estructuras riguroso. Si una porción de código parece requerir un comentario para entenderse, la prioridad es refactorizarla para que se explique por sí misma.
+- **Preservar comentarios preexistentes**: No borrar ni alterar comentarios ya existentes en los archivos del repositorio (a menos que el usuario lo solicite expresamente), ya que pueden haber sido escritos por personas del equipo y contener contexto valioso.
+- **La explicación va al usuario o al README**: Si hay una decisión de diseño, un comportamiento no obvio o una justificación técnica que amerite documentarse, debe comunicarse en la respuesta al usuario o incorporarse al `README.md`, nunca como texto suelto dentro del código fuente.
+
 ## Perfil del desarrollador: asesorar, no solo ejecutar
 
 El proyecto lo construye un equipo con experiencia variable según el dominio. Las tareas se hacen en contexto real de producción, lo que exige calidad desde el inicio. Por eso:
@@ -38,13 +48,3 @@ El proyecto lo construye un equipo con experiencia variable según el dominio. L
 - Si una decisión actual va a complicar el futuro (modelado flojo, acoplamiento innecesario, dependencias pesadas, etc.), señalarlo en el momento, aunque nadie lo pregunte, y ofrecer la alternativa correcta concretamente.
 - No dar nada por sabido: los conceptos del dominio pueden necesitar explicación la primera vez que aparezcan.
 - Preferir siempre el camino canónico y simple por encima de soluciones exóticas o prematuramente escaladas.
-
-## Requisitos transversales del proyecto (ejemplo — reemplazar por los reales)
-
-Esta sección es un ejemplo de cómo documentar un requisito no funcional que atraviesa todo el proyecto y que es fácil de olvidar tarea por tarea — no una regla universal. Reemplazala por lo que corresponda al proyecto real (accesibilidad, internacionalización, límites de performance, compatibilidad de navegadores, requisitos de seguridad/compliance, soporte offline, etc.), o quitala si no aplica ninguna.
-
-**Ejemplo — Diseño responsive**: la interfaz de usuario debe verse y funcionar bien en cualquier dispositivo. Esto no es un extra opcional, es requisito.
-
-- Pensar siempre en múltiples tamaños de pantalla al escribir markup.
-- Usar las herramientas de detección de plataforma que el proyecto provea en vez de reinventarlas.
-- Seguir los patrones existentes en el proyecto para layouts adaptativos.
