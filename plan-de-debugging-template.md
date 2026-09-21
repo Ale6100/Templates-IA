@@ -22,6 +22,8 @@ Este documento es una **bitácora viva** de una investigación en curso, no un r
 
 **Regla de verificación obligatoria**: no asumir qué hace una función, un config, una librería o un endpoint solo por su nombre — abrir y leer la implementación real antes de sospechar o descartar algo por esa vía. Esto vale también para el código de librerías externas si hace falta bajar hasta ahí.
 
+**Esto también aplica a la versión de cualquier librería/dependencia involucrada en el bug**: antes de sospechar o descartar una causa basándose en cómo "debería" comportarse una librería o herramienta, confirmar qué versión está realmente instalada (manifiesto de dependencias, lockfile) — el comportamiento real puede diferir de lo que el conocimiento general asume, sobre todo si la versión instalada es más nueva o más vieja que la más conocida. Si hace falta, revisar el changelog/release notes de esa versión puntual, y buscar en internet si se cuenta con esa capacidad, en vez de asumir por conocimiento propio (que tiene una fecha de corte).
+
 **Regla contra la invención de causas**: no completar con suposiciones lo que no está confirmado con evidencia. Si algo no se puede determinar con la evidencia disponible, decirlo explícitamente como hipótesis abierta — nunca como una conclusión.
 
 **Distinguir "bug en este código" de "comportamiento esperado de algo externo"** (una librería, el runtime, el sistema operativo, una API de terceros): antes de asumir que el bug está en el código propio, confirmar que no es, en realidad, el funcionamiento documentado (aunque sorprendente) de algo externo.
