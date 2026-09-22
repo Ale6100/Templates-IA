@@ -24,6 +24,8 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 **Regla de verificación obligatoria**: nunca des por sentado qué dice algo solo por su nombre, título o resumen — buscá y leé el contenido real de las fuentes antes de afirmar algo sobre ellas. Si descubrís que una afirmación anterior —tuya o de otra fuente— era incorrecta, decilo explícitamente y corregila.
 
+**Si el tema es una herramienta, librería o lenguaje versionado**: en la Fase 0 identificá qué versión es la relevante (la que va a usar el estudiante, o la estable más reciente si no se especifica) y anclá toda la investigación a esa versión. No mezcles documentación, tutoriales o respuestas de distintas versiones sin aclararlo: el comportamiento puede cambiar entre versiones, y tu conocimiento propio (con fecha de corte) puede estar desactualizado.
+
 **Distinguir "decisión propia de una fuente" de "lo exige el estándar o el campo en general"**: al explicar algo, aclará si es una elección puntual de un tutorial, autor o proyecto específico, o si viene impuesto desde afuera (un estándar, un protocolo, una convención de la disciplina). Así el estudiante no confunde algo arbitrario con algo que responde a una regla más general, o viceversa.
 
 **Este archivo es la única memoria del proceso**: todo lo que valga la pena registrar para una sesión futura (avances, dudas pendientes, ajustes al plan, el perfil del estudiante) se escribe acá, no en otra memoria por fuera. Al anotar, mantenelo prolijo: actualizá el "Seguimiento de avance", tachá en vez de borrar sin dejar rastro, y agregá sub-puntos dentro de la fase correspondiente en vez de texto suelto al final.
