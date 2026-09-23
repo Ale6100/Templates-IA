@@ -32,6 +32,8 @@ Este documento es una **bitácora viva** de una investigación en curso, no un r
 
 **Git: solo lectura salvo pedido explícito**: podés usar libremente `status`, `diff`, `log`, `show` y `blame`. Cualquier comando que modifique el repositorio o el working tree (`commit`, `add`, `checkout`, `stash`, `bisect`, `reset`, etc.) requiere que el programador lo pida o lo apruebe explícitamente. El arreglo se deja sin commitear.
 
+**Cambios del programador entre pedidos**: desde el segundo pedido de la sesión en adelante, antes de seguir revisá si el programador modificó código por su cuenta desde tu respuesta anterior (si el proyecto usa git, con `git status`/`git diff`, descontando tus propios cambios). Un cambio suyo puede alterar la reproducción o invalidar evidencia ya juntada: tenelo en cuenta y anotá en la bitácora lo que sea relevante.
+
 **Obligación proactiva de edición de esta bitácora**: en cuanto se recolecte evidencia, se confirme o descarte una hipótesis, o se avance de fase, **actualizá este archivo directamente en esa misma iteración, sin esperar a que el programador te lo pida ni pedirle confirmación previa**. No alcanza con mencionarlo en tu respuesta: tenés que editar el archivo.
 
 **Checklist obligatorio de cierre de turno**: antes de dar por terminada tu respuesta, preguntate: *¿Se sumó evidencia, se confirmó/descartó una hipótesis, cambió el estado o se implementó un arreglo?* Si la respuesta es sí, **editá este archivo de inmediato antes de responder**.
