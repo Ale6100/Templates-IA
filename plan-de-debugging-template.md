@@ -28,19 +28,25 @@ Este documento es una **bitácora viva** de una investigación en curso, no un r
 
 **Distinguir "bug en este código" de "comportamiento esperado de algo externo"** (una librería, el runtime, el sistema operativo, una API de terceros): antes de asumir que el bug está en el código propio, confirmá que no es el funcionamiento documentado (aunque sorprendente) de algo externo.
 
-**Ninguna hipótesis descartada se borra**: se tacha (`~~hipótesis~~`) anotando por qué se descartó y con qué evidencia, para que una sesión futura no vuelva a recorrer el mismo camino muerto. Fuera de eso, mantené la bitácora concisa: evidencia y conclusiones, no narraciones largas.
+**No arreglar sin causa raíz confirmada**: no apliques un cambio que "probablemente" arregle el síntoma sin haber confirmado la causa real — eso esconde el problema en vez de resolverlo, y puede reaparecer de otra forma.
+
+### Cómo trabajar con el programador
 
 **Git: solo lectura salvo pedido explícito**: podés usar libremente `status`, `diff`, `log`, `show` y `blame`. Cualquier comando que modifique el repositorio o el working tree (`commit`, `add`, `checkout`, `stash`, `bisect`, `reset`, etc.) requiere que el programador lo pida o lo apruebe explícitamente. El arreglo se deja sin commitear.
 
 **Cambios del programador entre pedidos**: desde el segundo pedido de la sesión en adelante, antes de seguir revisá si el programador modificó código por su cuenta desde tu respuesta anterior (si el proyecto usa git, con `git status`/`git diff`, descontando tus propios cambios). Un cambio suyo puede alterar la reproducción o invalidar evidencia ya juntada: tenelo en cuenta y anotá en la bitácora lo que sea relevante.
 
+**Preferencias del programador**: si el programador pide un cambio en cómo trabajar (qué aprobar antes de tocar código, nivel de detalle de las explicaciones, qué comandos correr o no), anotalo de inmediato en "Preferencias del programador" de "El caso" y respetalo en el resto de la investigación, incluidas las sesiones futuras.
+
+### Cómo mantener esta bitácora
+
+**Ninguna hipótesis descartada se borra**: se tacha (`~~hipótesis~~`) anotando por qué se descartó y con qué evidencia, para que una sesión futura no vuelva a recorrer el mismo camino muerto. Fuera de eso, mantené la bitácora concisa: evidencia y conclusiones, no narraciones largas.
+
 **Obligación proactiva de edición de esta bitácora**: en cuanto se recolecte evidencia, se confirme o descarte una hipótesis, o se avance de fase, **actualizá este archivo directamente en esa misma iteración, sin esperar a que el programador te lo pida ni pedirle confirmación previa**. No alcanza con mencionarlo en tu respuesta: tenés que editar el archivo.
 
-**Checklist obligatorio de cierre de turno**: antes de dar por terminada tu respuesta, preguntate: *¿Se sumó evidencia, se confirmó/descartó una hipótesis, cambió el estado o se implementó un arreglo?* Si la respuesta es sí, **editá este archivo de inmediato antes de responder**.
+**Checklist obligatorio de cierre de turno**: antes de dar por terminada tu respuesta, preguntate: *¿Se sumó evidencia, se confirmó/descartó una hipótesis, cambió el estado, se implementó un arreglo o el programador pidió un cambio en cómo trabajar?* Si la respuesta es sí, **editá este archivo de inmediato antes de responder**.
 
 **Este documento no es la fuente de la verdad**: si algo escrito acá (por ejemplo, una hipótesis "confirmada" en una sesión anterior) contradice lo que se ve ahora en el código o en la ejecución real, gana lo real — se corrige el documento, no se fuerza la realidad para que encaje.
-
-**No arreglar sin causa raíz confirmada**: no apliques un cambio que "probablemente" arregle el síntoma sin haber confirmado la causa real — eso esconde el problema en vez de resolverlo, y puede reaparecer de otra forma.
 
 ---
 
@@ -58,6 +64,7 @@ Este documento es una **bitácora viva** de una investigación en curso, no un r
 - **Comportamiento esperado** (confirmado, no asumido):
 - **Pasos para reproducirlo de forma confiable**:
 - **Contexto relevante** (versión, rama, entorno, desde cuándo pasa si se sabe, si es intermitente o consistente):
+- **Preferencias del programador** (cómo quiere trabajar; se suman a medida que aparecen):
 
 ---
 
