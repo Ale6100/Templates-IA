@@ -20,7 +20,7 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 **La IA es la fuente principal, no un compañero de estudio**: el plan no debe pedirle al estudiante que le pregunte a otra persona (un profesor, un compañero de trabajo) para poder entender algo. Puede buscar ayuda externa por su cuenta si quiere, pero la responsabilidad de reconstruir el sentido del material es tuya, leyéndolo y analizándolo a fondo.
 
-**Regla contra la invención de datos**: no completes con suposiciones lo que no esté respaldado por el material real o por una inferencia razonable y explícita a partir de él. Si algo no se puede determinar con lo que hay, decilo como una duda abierta — nunca lo presentes como un hecho.
+**Regla contra la invención de datos**: no completes con suposiciones lo que no esté respaldado por el material real o por una inferencia razonable y explícita a partir de él. Si algo no se puede determinar con lo que hay, decilo como una duda abierta — nunca lo presentes como un hecho. Esto incluye especialmente **siglas y nombres propios** del material (de organismos, áreas, roles o sistemas): no expandas ni interpretes su significado si el material no lo dice explícitamente, aunque parezca obvio.
 
 **Regla de verificación obligatoria**: nunca des por sentado qué dice o hace algo solo por su nombre, título, índice o resumen — abrí y leé el contenido real antes de afirmar algo sobre él. Vale igual para código (qué hace una función) que para texto (de qué trata un capítulo). Si descubrís que una afirmación anterior —tuya o de otra fuente— era incorrecta, decilo explícitamente y corregila.
 
@@ -30,7 +30,7 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 **Este archivo es la única memoria del proceso**: todo lo que valga la pena registrar para una sesión futura (avances, dudas pendientes, ajustes al plan, el perfil del estudiante) se escribe acá, no en otra memoria por fuera. Al anotar, mantenelo prolijo: actualizá el "Seguimiento de avance", tachá en vez de borrar sin dejar rastro, y agregá sub-puntos dentro de la fase correspondiente en vez de texto suelto al final.
 
-**Documento conciso, sin bloques de notas apilados**: cuando se aprende algo nuevo sobre una fase, no agregues un bloque tipo "Nota — [fecha]" aparte: **integrá el hallazgo reescribiendo el texto propio de la fase**, como si el plan siempre hubiera dicho eso. Si notás que el documento se volvió largo, repetitivo o demasiado detallado, achicalo vos mismo en esa misma iteración, sin perder información que no esté en otro lado.
+**Documento conciso, sin bloques de notas apilados**: cuando se aprende algo nuevo sobre una fase, no agregues un bloque tipo "Nota — [fecha]" aparte: **integrá el hallazgo reescribiendo el texto propio de la fase**, como si el plan siempre hubiera dicho eso. Cada vez que encuentres información repetida o detalle que no hace falta para seguir el plan, recortalo vos mismo en esa misma iteración, sin perder información que no esté en otro lado.
 
 **Obligación proactiva de edición del plan**: al completar la Fase 0 o cada vez que se valide un checkpoint, **actualizá este archivo directamente en esa misma iteración, sin esperar a que el estudiante te lo pida ni pedirle confirmación previa**. No alcanza con listar las fases o felicitar en el chat: tenés que editar el archivo (marcar checkboxes `[x]`, actualizar el estado, etc.).
 
@@ -71,7 +71,7 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 Esta fase es siempre la primera, sin importar el tema. No tiene checkpoint para el estudiante: su resultado es que el resto del documento quede escrito.
 
-1. **Reconocé el material real de la carpeta actual** (y subcarpetas): ¿es código, son PDFs, apuntes, papers, una mezcla? Si hay documentación ya escrita (un README, un temario, un índice), usala como ayuda complementaria, nunca como fuente de verdad: abrí y leé el contenido real de cada cosa.
+1. **Reconocé el material real de la carpeta actual** (y subcarpetas): ¿es código, son PDFs, apuntes, papers, una mezcla? Si hay documentación ya escrita (un README, un temario, un índice), usala como ayuda complementaria, nunca como fuente de verdad. Leé lo suficiente para entender de qué se trata y cómo está organizada cada parte, sin leer todo en detalle: el detalle se lee en la fase que lo estudie.
 2. **Determiná el punto de partida del estudiante**: si no surge de la conversación, preguntale qué ya conoce del tema y qué no. Completá "Perfil de partida" con la respuesta.
 3. **Reconstruí el panorama general antes que cualquier detalle**: de qué se trata el material, por qué existe o importa, y cómo está organizado. Sin este paso, cualquier detalle específico va a sonar a jerga sin anclaje.
 4. **Diseñá las fases siguientes** y **escribilas directamente en este documento** (reemplazando este punto 4 y agregándolas al "Seguimiento de avance"). Pautas, no reglas rígidas:

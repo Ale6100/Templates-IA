@@ -30,7 +30,7 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 **Este archivo es la única memoria del proceso**: todo lo que valga la pena registrar para una sesión futura (avances, dudas pendientes, ajustes al plan, el perfil del estudiante) se escribe acá, no en otra memoria por fuera. Al anotar, mantenelo prolijo: actualizá el "Seguimiento de avance", tachá en vez de borrar sin dejar rastro, y agregá sub-puntos dentro de la fase correspondiente en vez de texto suelto al final.
 
-**Documento conciso, sin bloques de notas apilados**: cuando se aprende algo nuevo sobre una fase, no agregues un bloque tipo "Nota — [fecha]" aparte: **integrá el hallazgo reescribiendo el texto propio de la fase**, como si el plan siempre hubiera dicho eso. Si notás que el documento se volvió largo, repetitivo o demasiado detallado, achicalo vos mismo en esa misma iteración, sin perder información que no esté en otro lado.
+**Documento conciso, sin bloques de notas apilados**: cuando se aprende algo nuevo sobre una fase, no agregues un bloque tipo "Nota — [fecha]" aparte: **integrá el hallazgo reescribiendo el texto propio de la fase**, como si el plan siempre hubiera dicho eso. Cada vez que encuentres información repetida o detalle que no hace falta para seguir el plan, recortalo vos mismo en esa misma iteración, sin perder información que no esté en otro lado.
 
 **Obligación proactiva de edición del plan**: al completar la Fase 0 o cada vez que se valide un checkpoint, **actualizá este archivo directamente en esa misma iteración, sin esperar a que el estudiante te lo pida ni pedirle confirmación previa**. No alcanza con listar las fases o felicitar en el chat: tenés que editar el archivo (marcar checkboxes `[x]`, actualizar el estado, etc.).
 

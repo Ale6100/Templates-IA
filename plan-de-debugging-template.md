@@ -2,7 +2,7 @@
 
 ## Cómo usar esta plantilla (leer una sola vez, esto no es parte del plan en sí)
 
-1. Copiá este archivo a la raíz del proyecto cuando te encuentres con un bug que no se resuelve mirándolo dos minutos — no hace falta para cualquier error trivial.
+1. Copiá este archivo a la raíz del proyecto cuando te encuentres con un bug que no se resuelve mirándolo dos minutos — no hace falta para cualquier error trivial. Renombralo según el bug (por ejemplo `plan-de-debugging-<bug>.md`) para no pisar una bitácora anterior.
 2. Contale a la IA el síntoma real que estás viendo y señalá este archivo.
 3. La IA arranca por la Fase 0 (reconocimiento) y va llenando el resto del documento a medida que investiga.
 
@@ -100,6 +100,7 @@ Este documento es una **bitácora viva** de una investigación en curso, no un r
 4. Aplicalo y **volvé a correr exactamente los pasos de reproducción** de "El caso": el bug tiene que dejar de pasar con el mismo procedimiento que antes lo reproducía.
 5. Revisá si el arreglo puede afectar algo más (regresiones) — no lo des por seguro solo porque el caso puntual ya funciona. Si modificó configuración, dependencias, variables de entorno o comportamiento documentado, **actualizá el `README.md` del proyecto en esa misma iteración**.
 6. Cerrá con una explicación breve de **por qué pasaba** (la causa raíz, en criollo) y, si aplica, si el mismo error podría estar repetido en otro lugar parecido del código — decilo aunque no se pida.
+7. Preguntale al programador si quiere conservar esta bitácora o borrarla, para que no quede olvidada en el proyecto.
 
 **Checkpoint final**: el bug reproducido en la Fase 0 ya no ocurre con el arreglo aplicado, la causa raíz quedó explicada con evidencia, y quedó constancia de si el mismo problema podría existir en otro lado.
 
