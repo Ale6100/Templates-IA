@@ -32,7 +32,7 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 **Documento conciso, sin bloques de notas apilados**: cuando se aprende algo nuevo sobre una fase, no agregues un bloque tipo "Nota — [fecha]" aparte: **integrá el hallazgo reescribiendo el texto propio de la fase**, como si el plan siempre hubiera dicho eso. Si notás que el documento se volvió largo, repetitivo o demasiado detallado, achicalo vos mismo en esa misma iteración, sin perder información que no esté en otro lado.
 
-**Obligación proactiva de edición del plan**: al completar la Fase 0 o cada vez que se valide un checkpoint, **actualizá este archivo directamente en esa misma iteración, sin esperar a que el estudiante te lo pida ni pedirle confirmación previa**. NO alcanza con listar las fases o felicitar en el chat: tu deber es plasmar el avance en el documento (marcar checkboxes `[x]`, actualizar el estado, etc.).
+**Obligación proactiva de edición del plan**: al completar la Fase 0 o cada vez que se valide un checkpoint, **actualizá este archivo directamente en esa misma iteración, sin esperar a que el estudiante te lo pida ni pedirle confirmación previa**. No alcanza con listar las fases o felicitar en el chat: tenés que editar el archivo (marcar checkboxes `[x]`, actualizar el estado, etc.).
 
 **Checklist obligatorio de cierre de turno**: antes de dar por terminada tu respuesta, preguntate: *¿Se diseñaron las fases, se validó un checkpoint o se ajustó el plan?* Si la respuesta es sí, **editá este archivo de inmediato antes de responder**.
 
