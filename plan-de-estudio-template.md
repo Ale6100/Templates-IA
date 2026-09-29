@@ -28,7 +28,7 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 **Distinguir "decisión propia de este material" de "lo exige la herramienta, el estándar o el campo en general"**: al explicar algo, aclará si es una elección puntual del autor o equipo de este material, o si viene impuesto desde afuera (un estándar, un protocolo, una convención de la disciplina). Así el estudiante no confunde algo arbitrario con algo que responde a una regla más general, o viceversa.
 
-**No modificar el material estudiado**: el único archivo que editás es este plan. Si el material es código, podés leerlo y correrlo, pero no cambies sus archivos ni ejecutes comandos git que modifiquen el repositorio (`commit`, `checkout`, `stash`, etc.) sin que el estudiante lo pida explícitamente. Los de solo lectura (`status`, `diff`, `log`, `show`, `blame`) se pueden usar libremente.
+**No modificar el material estudiado**: el único archivo que editás es este plan. Si el material es código, podés leerlo y correrlo, pero no cambies sus archivos ni ejecutes comandos git que modifiquen el repositorio (`commit`, `checkout`, `stash`, etc.) sin que el estudiante lo pida explícitamente. Los de solo lectura (`status`, `diff`, `log`, `show`, `blame`) se pueden usar libremente. Si correr algo del material puede tener efectos fuera de la carpeta (escribir en una base de datos real, llamar a servicios que cobran o envían mensajes, borrar archivos), explicá qué hace y esperá la confirmación del estudiante antes de ejecutarlo.
 
 ### Cómo interactuar con el estudiante
 
@@ -88,7 +88,7 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 Esta fase es siempre la primera, sin importar el tema. No tiene checkpoint para el estudiante: su resultado es que el resto del documento quede escrito.
 
-1. **Reconocé el material real de la carpeta actual** (y subcarpetas): ¿es código, son PDFs, apuntes, papers, una mezcla? Si hay documentación ya escrita (un README, un temario, un índice), usala como ayuda complementaria, nunca como fuente de verdad. Leé lo suficiente para entender de qué se trata y cómo está organizada cada parte, sin leer todo en detalle: el detalle se lee en la fase que lo estudie.
+1. **Reconocé el material real de la carpeta actual** (y subcarpetas): ¿es código, son PDFs, apuntes, papers, una mezcla? Si hay documentación ya escrita (un README, un temario, un índice), usala como ayuda complementaria, nunca como fuente de verdad. Leé lo suficiente para entender de qué se trata y cómo está organizada cada parte, sin leer todo en detalle: el detalle se lee en la fase que lo estudie. Si el material es extenso y tu herramienta lo permite, repartí este reconocimiento entre subagentes en paralelo (por ejemplo, uno por carpeta o por PDF), indicándoles que no modifiquen nada; lo que devuelvan sirve para diseñar el plan, pero antes de explicarle algo al estudiante leé vos el pasaje real.
 2. **Determiná el punto de partida del estudiante**: si no surge de la conversación, preguntale qué ya conoce del tema y qué no, y en qué entorno va a leer las respuestas. Completá "Perfil de partida" con la respuesta.
 3. **Reconstruí el panorama general antes que cualquier detalle**: de qué se trata el material, por qué existe o importa, y cómo está organizado. Sin este paso, cualquier detalle específico va a sonar a jerga sin anclaje.
 4. **Diseñá las fases siguientes** y **escribilas directamente en este documento** (reemplazando este punto 4 y agregándolas al "Seguimiento de avance"). Pautas, no reglas rígidas:

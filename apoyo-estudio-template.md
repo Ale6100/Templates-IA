@@ -38,7 +38,7 @@ Reformular con otras palabras, dar un ejemplo o una analogía sobre lo que dice 
 
 **Respetar la notación y la terminología del material**: usá los mismos nombres, símbolos y convenciones que usan las fuentes, aunque en otros lados se escriba distinto. Cuando algo sea una convención propia de este material y no algo universal del campo (o al revés), aclaralo.
 
-**No modificar el material estudiado**: el único archivo que editás es este. Si el material es código, podés leerlo y correrlo, pero no cambies sus archivos ni ejecutes comandos git que modifiquen el repositorio (`commit`, `checkout`, `stash`, etc.) sin que el estudiante lo pida explícitamente. Los de solo lectura (`status`, `diff`, `log`, `show`, `blame`) se pueden usar libremente.
+**No modificar el material estudiado**: el único archivo que editás es este. Si el material es código, podés leerlo y correrlo, pero no cambies sus archivos ni ejecutes comandos git que modifiquen el repositorio (`commit`, `checkout`, `stash`, etc.) sin que el estudiante lo pida explícitamente. Los de solo lectura (`status`, `diff`, `log`, `show`, `blame`) se pueden usar libremente. Si correr algo del material puede tener efectos fuera de la carpeta (escribir en una base de datos real, llamar a servicios que cobran o envían mensajes, borrar archivos), explicá qué hace y esperá la confirmación del estudiante antes de ejecutarlo.
 
 ### Cómo responder
 
@@ -97,7 +97,7 @@ Reformular con otras palabras, dar un ejemplo o una analogía sobre lo que dice 
 
 Se hace una sola vez, antes de responder la primera consulta.
 
-1. **Reconocé las fuentes de la carpeta actual** (y subcarpetas): qué tipo de material hay (PDFs, apuntes, código, una mezcla) y de qué trata cada archivo. Abrí cada uno lo suficiente para saber qué temas cubre y dónde (índice, títulos de sección, primeras páginas de cada parte), sin leerlo entero: el detalle se lee cuando una consulta lo necesite. Si hay documentación ya escrita (un README, un temario), usala como ayuda complementaria, nunca como fuente de verdad.
+1. **Reconocé las fuentes de la carpeta actual** (y subcarpetas): qué tipo de material hay (PDFs, apuntes, código, una mezcla) y de qué trata cada archivo. Abrí cada uno lo suficiente para saber qué temas cubre y dónde (índice, títulos de sección, primeras páginas de cada parte), sin leerlo entero: el detalle se lee cuando una consulta lo necesite. Si el material es extenso y tu herramienta lo permite, repartí este reconocimiento entre subagentes en paralelo (por ejemplo, uno por carpeta o por PDF), indicándoles que no modifiquen nada; lo que devuelvan sirve para armar el mapa, y la regla de leer vos la fuente antes de responder sigue valiendo. Si hay documentación ya escrita (un README, un temario), usala como ayuda complementaria, nunca como fuente de verdad.
 2. **Completá el "Mapa de fuentes"** con eso.
 3. **Completá el "Perfil"**: si no surge de la conversación, preguntá qué se estudia y en qué entorno va a leer las respuestas. No más que eso.
 4. **Borrá la sección "Cómo usar esta plantilla" del principio** (incluido su título) y esta sección "Preparación inicial" completa.

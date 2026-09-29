@@ -47,16 +47,27 @@ No completes con suposiciones lo que no esté respaldado por el código o por un
 
 Esto incluye especialmente **siglas y nombres propios** (del proyecto, de organismos, áreas, roles o sistemas): no los expandas ni interpretes su significado si el código no lo dice explícitamente, aunque parezca obvio. Tampoco los renombres ni fusiones: si el proyecto se llama de una forma o trata dos cosas como separadas, respetalo tal cual.
 
-## Git: solo lectura salvo pedido explícito
+## Git y acciones irreversibles: solo con pedido explícito
 
 - **Prohibido ejecutar comandos git que modifiquen el repositorio** (`add`, `commit`, `push`, `pull`, `merge`, `rebase`, `reset`, `checkout`/`restore`, `stash`, crear o borrar ramas y tags, etc.) a menos que el programador lo pida explícitamente en ese momento. Que lo haya pedido antes para otra tarea no vale como permiso para la siguiente.
 - Los comandos de solo lectura (`status`, `diff`, `log`, `show`, `blame`, listar ramas) sí se pueden usar libremente.
 - Al terminar un cambio, dejalo sin commitear.
+- **Lo mismo aplica a cualquier acción difícil de revertir o con efectos fuera del repositorio**: borrar archivos o carpetas que no creaste vos en la tarea, correr migraciones o scripts sobre una base de datos real, hacer deploys, o llamar a servicios que cobran por uso, envían mensajes o modifican datos de terceros. Antes de hacerlo, explicá qué vas a hacer y esperá la confirmación del programador.
 
 ## Cambios del programador entre pedidos
 
 - Desde el segundo pedido de la sesión en adelante, antes de empezar revisá si el programador modificó código por su cuenta desde tu respuesta anterior: si el proyecto usa git, mirá `git status`/`git diff` y descontá los cambios que hiciste vos.
 - Si esos cambios afectan al README, actualizalo. Si ves problemas en ellos (riesgos, malas prácticas, decisiones que van a complicar el futuro), mencionáselos brevemente. No reescribas su código salvo que te lo pida.
+
+## Brainstorming antes de implementar
+
+Antes de escribir código, decidí si el pedido lo necesita. **Hacé brainstorming** cuando el pedido sea ambiguo o vago, toque varias partes del sistema, o implique una decisión de arquitectura o de diseño con consecuencias a futuro. **No lo hagas** en cambios chicos y claros (un bug puntual, un ajuste de texto, un renombre): ahí ejecutá directo.
+
+Cuando corresponda, resolvelo en un solo intercambio con el programador:
+
+1. **Explorá el contexto primero**: leé el README y el código involucrado, para no preguntar lo que el código ya responde.
+2. **En un único mensaje**, planteá solo las dudas que cambian el diseño (objetivo real, restricciones, casos borde) y proponé 2 o 3 enfoques con sus pros y contras, recomendando uno y explicando por qué. Si se te ocurre algo mejor que lo que pidió el programador, proponelo acá. Sé breve: el objetivo es acordar el rumbo, no escribir un documento de diseño.
+3. **Implementá con su visto bueno.** Si mientras implementás aparece algo no previsto que cambia lo acordado, frená y consultalo.
 
 ## Estilo del código
 
@@ -76,3 +87,15 @@ El proyecto lo construye un equipo con experiencia variable según el dominio. L
 - Si una decisión actual va a complicar el futuro (modelado flojo, acoplamiento innecesario, dependencias pesadas, etc.), señalalo en el momento, aunque nadie lo pregunte, y ofrecé la alternativa correcta concretamente.
 - No des nada por sabido: los conceptos del dominio pueden necesitar explicación la primera vez que aparezcan.
 - Preferí siempre el camino canónico y simple por encima de soluciones exóticas o prematuramente escaladas.
+- Si implementaste algo que el programador no pidió, avisalo explícitamente en tu respuesta.
+
+## Subagentes y agentes en paralelo
+
+Un subagente es otra instancia de IA, con contexto limpio, a la que se le delega una tarea acotada y que devuelve solo el resultado. Si tu herramienta lo permite, usalos cuando mejoren la calidad del resultado, priorizando la calidad por sobre el ahorro de tokens. Si no lo permite, hacé esas tareas vos mismo; nunca digas que delegaste algo que no delegaste.
+
+- **Revisión independiente**: después de un cambio no trivial, delegá la revisión (bugs, casos borde, consistencia con el estilo del proyecto) a un subagente que no haya escrito el código. Al no compartir tus suposiciones, detecta errores que vos no ves.
+- **Investigación amplia**: para recorrer muchos archivos, comparar alternativas o buscar en internet, delegá en subagentes para no llenar tu contexto con material intermedio.
+- **Paralelismo**: lanzá varios a la vez solo si las tareas son independientes entre sí y no tocan los mismos archivos. Si hay dependencias entre tareas o archivos compartidos, hacelas en secuencia.
+- **Escribir código en paralelo**: solo cuando las partes tengan interfaces claras y archivos disjuntos. Al terminar, integrá vos los resultados y revisá que encajen.
+- **Sos responsable del resultado**: verificá lo que devuelven contra el código real (regla de verificación obligatoria) y no lo presentes al programador como un hecho sin contrastarlo. Todas las reglas de este archivo, incluida la de git y acciones irreversibles, aplican también a los subagentes: indicáselas al delegar.
+- No delegues lo trivial ni las decisiones de diseño que requieren al programador: esas se consultan con él.

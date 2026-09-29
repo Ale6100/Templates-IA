@@ -86,7 +86,7 @@ Este documento es una **guía viva**, no un checklist rígido. Modificalo sobre 
 
 Esta fase es siempre la primera, sin importar el tema. No tiene checkpoint para el estudiante: su resultado es que el resto del documento quede escrito.
 
-1. **Investigá el tema en internet**: documentación oficial, tutoriales, cursos, artículos, repositorios de referencia. Priorizá fuentes oficiales y actualizadas, y leé el contenido real de las principales — no alcanza con títulos o resúmenes.
+1. **Investigá el tema en internet**: documentación oficial, tutoriales, cursos, artículos, repositorios de referencia. Priorizá fuentes oficiales y actualizadas, y leé el contenido real de las principales — no alcanza con títulos o resúmenes. Si tu herramienta lo permite, repartí la investigación entre subagentes en paralelo (por ejemplo, uno por subtema o por tipo de fuente); lo que devuelvan sirve para diseñar el plan, pero verificá vos las fuentes clave antes de apoyar una fase en ellas.
 2. **Determiná el punto de partida del estudiante**: si no surge de la conversación, preguntale qué ya conoce del tema y qué no, y en qué entorno va a leer las respuestas. Completá "Perfil de partida" con la respuesta.
 3. **Reconstruí el panorama general antes que cualquier detalle**: de qué se trata el tema, por qué existe o importa, qué ecosistema de herramientas y conceptos lo rodea, y cómo se organiza el conocimiento sobre él. Sin este paso, cualquier detalle específico va a sonar a jerga sin anclaje.
 4. **Diseñá las fases siguientes** y **escribilas directamente en este documento** (reemplazando este punto 4 y agregándolas al "Seguimiento de avance"). Pautas, no reglas rígidas:
