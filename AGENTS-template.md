@@ -138,11 +138,12 @@ El **README.md es la documentación principal** del proyecto y la única que man
   - un workaround o un comportamiento no evidente de algo externo (librería, API, plataforma, navegador);
   - un algoritmo que no se entiende aunque esté bien nombrado y dividido;
   - un valor cuyo origen no se deduce del código (un límite que impone un servicio externo, una cifra tomada de una norma);
+  - la documentación de una pieza reutilizable que se usa desde otras partes del proyecto (un componente compartido, un hook o composable, una función utilitaria exportada): en el formato de docstring del lenguaje (JSDoc, docstring de Python, etc.), una o dos líneas sobre qué hace y para qué se usa, y una línea por cada parámetro (en un componente, sus props, eventos y slots). Va en un único bloque sobre la pieza o, si el framework documenta los parámetros en sus tipos (como los props tipados de un componente), en una línea sobre cada campo, que es lo que muestra el editor. No va en funciones internas, en pantallas o componentes de un solo uso, ni dentro del cuerpo, y no describe cómo está implementada la pieza;
   - un docstring o JSDoc que el linter o la configuración del proyecto exijan.
 
   En los tres primeros, una o dos líneas que expliquen el *porqué*, no el *qué*, con el formato que use el proyecto. Fuera de esta lista no va ninguno, aunque parezca útil.
 - **Comentarios que nunca van**, porque son los que más tiende a agregar una IA:
-  - los que repiten lo que ya dice el código o el nombre de la función, constante o archivo (narrar qué hace una condición, un mapeo o un hook);
+  - los que repiten lo que ya dice el código o el nombre de la función, constante o archivo (narrar qué hace una condición, un mapeo o un hook). La documentación de una pieza reutilizable es la excepción: describe todos sus parámetros, aunque el nombre de alguno ya lo sugiera;
   - los que cuentan el cambio o su historia ("ahora usa X en vez de Y", "agregado para el fix de Z") o le hablan al revisor: eso va en tu respuesta;
   - los que justifican una decisión de diseño o de negocio (por qué se eligió una opción y no otra), aunque tengan un porqué: van al README o a tu respuesta;
   - código comentado, separadores de sección y TODOs propios.
