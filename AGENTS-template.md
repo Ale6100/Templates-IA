@@ -5,12 +5,12 @@ Reglas de trabajo para los agentes de IA en este proyecto. Además de ejecutar l
 El archivo va de lo general a lo específico:
 
 - **Principios**: cómo pensar en cualquier tarea.
-- **Límites**: qué acciones están prohibidas, cuáles requieren confirmación, cuáles se hacen solo si se piden y cuáles son libres.
+- **Límites**: qué acciones requieren confirmación, cuáles se hacen solo si se piden y cuáles son libres.
 - **Flujo de trabajo**: qué hacer en cada momento de una tarea.
 - **Reglas por área**: para consultar al trabajar en cada parte del proyecto.
 - **Subagentes** y, al final, las reglas **sobre este archivo**.
 
-Si el programador pide algo que contradice este archivo, para esa tarea manda su pedido (podés advertirle el riesgo una vez), salvo lo marcado como **Nunca** en Límites.
+Si el programador pide algo que contradice este archivo, para esa tarea manda su pedido (podés advertirle el riesgo una vez).
 
 ---
 
@@ -20,7 +20,7 @@ Si el programador pide algo que contradice este archivo, para esa tarea manda su
 
 No des nada por hecho por cómo se ve o se llama algo (una función, una variable, un archivo, un endpoint, un flag de config). Entrá al código, leé la implementación real, y contrastá qué hace de verdad antes de confiar en ello, documentarlo, o explicárselo al programador.
 
-Ejemplo ilustrativo (no es necesariamente real en este repo): si existe una función `sendNotification()` o un flag `isProduction`, no asumas que la primera manda una notificación de verdad ni que el segundo refleja el ambiente real solo por el nombre — leé el cuerpo y confirmá que hacen lo que dicen (y no, por ejemplo, que solo loguean, que están sin terminar, o que el flag está hardcodeado en `true`).
+Por ejemplo: si existe una función `sendNotification()` o un flag `isProduction`, no asumas que la primera manda una notificación de verdad ni que el segundo refleja el ambiente real solo por el nombre — leé el cuerpo y confirmá que hacen lo que dicen (y no que solo loguean, que están sin terminar, o que el flag está hardcodeado en `true`).
 
 Esta misma regla aplica a las **versiones de las dependencias**: antes de proponer, escribir o analizar código que use una librería, framework o herramienta, fijate qué versión está realmente declarada o instalada (manifiesto de dependencias, lockfile o su equivalente), no la que asumís por defecto. Tu conocimiento puede fallar en dos direcciones: sugerir una API más nueva que la versión del proyecto, o ignorar cambios posteriores a tu fecha de corte. Ante la duda, si podés buscar en internet, confirmalo ahí.
 
@@ -45,20 +45,15 @@ El proyecto lo construye un equipo con experiencia variable según el dominio. L
 
 ## Límites
 
-### Nunca (ni aunque el programador lo pida)
-
-- **Nunca ejecutes tests que se conecten a una base de datos o a servicios externos reales** (cualquier motor de base de datos, aunque parezca local, en memoria o de prueba; pagos, envío de mensajes y cualquier API de terceros, incluso las de solo lectura). El motivo: muchos frameworks vacían o recrean la base de datos al correr los tests, así que si la configuración apunta por error a una base delicada o de producción, se pierden datos reales; un servicio externo, además, puede generar efectos o costos reales. Ese daño no tiene vuelta atrás. No podés verificar con certeza a qué apunta una conexión, así que esta regla no tiene excepciones: si el programador te pide correrlos, explicale el riesgo y pasale el comando para que lo ejecute él.
-- **Para decidir si un test se conecta, mirá todo lo que se ejecuta al correrlo**, no solo su cuerpo: la configuración y el setup global del runner, los helpers, los fixtures automáticos y las variables de entorno de test (en muchos frameworks, correr cualquier test ya prepara o limpia la base). Un test con dependencias simuladas (mocks) queda fuera de la prohibición solo si nada de eso abre una conexión real; una base o un servicio levantados en un contenedor o emulador local cuentan como reales. Si no podés determinarlo, tratalo como si se conectara.
-- **Tampoco crees ni edites tests de ese tipo**: como no podés correrlos, no tendrías forma de comprobar que lo que escribiste funciona. Si un cambio afecta comportamiento cubierto por ellos, avisale al programador cuáles podrían necesitar actualizarse.
-
 ### Con confirmación previa
 
-Cada confirmación vale para esa acción puntual, no para las siguientes.
+Requieren confirmación las acciones que pueden perder trabajo del programador, salen del entorno de desarrollo o traen código de terceros. Antes de hacerlas, explicá qué vas a hacer y esperá su confirmación. Cada confirmación vale para esa acción puntual, salvo en Comandos de desarrollo con efectos que el README no menciona.
 
 - **Git que puede perder trabajo o que toca el remoto**: cualquier comando que pueda descartar cambios sin commitear o reescribir historia (`reset --hard`, `checkout`/`restore` sobre archivos, `clean`, `stash drop`, `branch -D`, `rebase`, `commit --amend`), `pull`, `merge` y cualquier `push`, y cambiar de rama o hacer `stash` si hay cambios sin commitear.
-- **Acciones con efectos fuera del repositorio**: correr migraciones, seeds o scripts sobre cualquier base de datos (aunque parezca local o de desarrollo: no podés verificar con certeza a qué apunta una conexión), levantar la aplicación o un servidor de desarrollo que se conecte a una base de datos (algunos corren migraciones o escriben datos al arrancar), hacer deploys, o llamar a servicios que cobran por uso, envían mensajes o modifican datos de terceros. Antes de hacerlo, explicá qué vas a hacer y esperá la confirmación del programador. Esto incluye correr a propósito una verificación que no sea un test y se conecte a una base de datos o servicio externo (por ejemplo, un build que corre migraciones); como verificación de rutina, esas se excluyen (ver Tests).
-- **Dependencias y scripts de setup**: instalar, actualizar o quitar dependencias, o correr scripts de instalación o setup: pueden ejecutar código de terceros, cambiar el lockfile o tocar la base de datos. Antes de pedir la confirmación, revisá qué ejecuta el comando.
-- **Borrar o reemplazar entero un archivo que git no versiona y que no creaste vos** (untracked o ignorado, como un `.env` o datos locales): no tiene vuelta atrás. Lo que se regenera con un comando del proyecto (dependencias instaladas, salida del build, cachés) no necesita esta confirmación.
+- **Borrar, reemplazar o editar un archivo que git no versiona y que no creaste vos** (untracked o ignorado, como un `.env`): no tiene vuelta atrás. Si falta configuración local, avisale qué falta para que la agregue él. No cuenta editar archivos de código nuevos que todavía no están en git, ni lo que se regenera con un comando del proyecto (dependencias instaladas, salida del build, cachés).
+- **Deploys y servicios externos**: hacer deploys, aunque los haga un script del proyecto, o llamar por tu cuenta a servicios que cobran por uso, envían mensajes o modifican datos de terceros.
+- **Dependencias**: agregar, actualizar o quitar dependencias, o correr un script de setup que el README no documente: pueden ejecutar código de terceros. Antes de pedir la confirmación, revisá qué ejecuta el comando. Instalar lo que ya fija el lockfile, sin modificarlo, no cuenta.
+- **Comandos de desarrollo con efectos que el README no menciona**: si un comando de desarrollo (un test, un seed, un script) vacía la base con la que desarrolla el programador, modifica recursos que comparten otras personas o usa servicios externos que requieren confirmación (o no podés saber si lo hace) y el README no lo dice, preguntá una sola vez y no lo corras hasta que responda. Documentá la respuesta en el README como un dato del proyecto, junto a ese comando o a la configuración: qué efecto tiene y, si así lo decide, que se corre a mano. Si el README ya lo menciona, hacé lo que dice, sin preguntar: lo que se corre a mano no lo corrés vos, y si tu cambio lo afecta, avisale. Si son los tests los que vacían la base de desarrollo, sugerile una base aparte para tests, que es lo habitual.
 
 ### Solo si se te pide
 
@@ -68,7 +63,8 @@ Cada confirmación vale para esa acción puntual, no para las siguientes.
 ### Libre
 
 - **Git sin riesgo**: podés usar libremente los comandos que no pierden trabajo (`status`, `diff`, `log`, `mv`, ramas locales, etc.).
-- **Archivos dentro de una tarea acordada**: podés crear, mover, renombrar o borrar archivos sin pedir permiso aparte, avisándolo en tu respuesta (salvo borrar o reemplazar entero un archivo no versionado que no creaste vos, ver Con confirmación previa).
+- **Archivos dentro de una tarea acordada**: podés crear, mover, renombrar o borrar archivos sin pedir permiso aparte, avisándolo en tu respuesta (salvo lo indicado en Con confirmación previa).
+- **Comandos de desarrollo**: correr tests, migraciones, seeds y los scripts del día a día, y levantar la aplicación, salvo lo indicado en Con confirmación previa.
 
 ## Flujo de trabajo
 
@@ -76,7 +72,7 @@ Cada confirmación vale para esa acción puntual, no para las siguientes.
 
 - Al empezar la sesión, si el proyecto usa git, mirá `git status` para saber qué cambios sin commitear ya había.
 - Al empezar cada tarea, leé el README para entender el contexto del proyecto antes de tocar código.
-- **Cambios del programador entre pedidos**: desde el segundo pedido en adelante, antes de empezar revisá si el programador modificó código por su cuenta desde tu respuesta anterior: compará `git status`/`git diff` contra ese punto de partida y descontá los cambios que hiciste vos. Si esos cambios afectan al README, actualizalo. Si cambian comportamiento cubierto por tests, corré los relevantes según las reglas de tests y avisale si fallan, sin adaptar los tests a sus cambios: la falla puede estar en su código. Si ves problemas en ellos (riesgos, malas prácticas, decisiones que van a complicar el futuro), mencionáselos brevemente. No reescribas su código salvo que te lo pida.
+- **Cambios del programador entre pedidos**: desde el segundo pedido en adelante, antes de empezar revisá si el programador modificó código por su cuenta desde tu respuesta anterior: compará `git status`/`git diff` contra ese punto de partida y descontá los cambios que hiciste vos. Si esos cambios afectan al README, actualizalo. Si cambian comportamiento cubierto por tests, corré los tests relevantes y avisale si fallan, sin adaptar los tests a sus cambios: la falla puede estar en su código. Si ves problemas en ellos (riesgos, malas prácticas, decisiones que van a complicar el futuro), mencionáselos brevemente. No reescribas su código salvo que te lo pida.
 
 ### Antes de implementar
 
@@ -96,14 +92,14 @@ Cuando corresponda, resolvelo en un solo intercambio con el programador:
 
 1. **README**: *¿Cambiaron archivos, tipos, endpoints, rutas o funcionalidades documentadas, o que deberían documentarse, en el README?* Si la respuesta es sí, **editá el `README.md` de inmediato antes de responder**. Si lo editaste, releé el archivo final completo: que siga cumpliendo el criterio de concisión y que no haya quedado roto (tablas desarmadas, bloques de código sin cerrar, fragmentos sueltos o duplicados).
 2. **Comentarios** (si cambiaste código): recorré tus cambios (el diff, si el proyecto usa git) buscando cada comentario, docstring o JSDoc que agregaste, y quitá los que no estén en la lista de casos permitidos de Estilo del código. Si lo que decían vale la pena, pasalo a tu respuesta o al README.
-3. **Tests** (si cambiaste código): *¿Cambió algún comportamiento?* Si la respuesta es sí, verificá que agregaste o actualizaste los tests que correspondan según las reglas de tests y que corriste los que se pueden correr.
-4. **Verificaciones** (si cambiaste código): las rápidas (linter, chequeo de tipos) en cada respuesta y, si terminaste la tarea, también las lentas (build completo, suite entera), con las mismas exclusiones que en las reglas de tests.
+3. **Tests** (si cambiaste código): *¿Cambió algún comportamiento?* Si la respuesta es sí, verificá que agregaste o actualizaste los tests que correspondan según las reglas de tests y que corriste los relevantes.
+4. **Verificaciones** (si cambiaste código): las rápidas (linter, chequeo de tipos) en cada respuesta y, si terminaste la tarea, también las lentas (build completo, suite entera).
 
 **Qué informar en tu respuesta**:
 
 - Avisá si implementaste algo que el programador no pidió, y si creaste, moviste, renombraste o borraste archivos.
-- Mencioná brevemente si agregaste o modificaste tests.
-- De las verificaciones automáticas, avisá solo si algo falla o si no pudiste correr algo por otro motivo (un comando roto, un error de entorno); si pasan, no hace falta mencionarlo. Lo que excluiste por conectarse a bases de datos o servicios externos no lo menciones en cada respuesta: queda cubierto por el README, que documenta qué verificaciones corre solo el programador.
+- Mencioná brevemente si agregaste o modificaste tests. Si agregaste, indicá qué casos cubriste, cuáles dejaste afuera y qué expectativas se basan en una regla confirmada y cuáles en suponer que el código actual es correcto.
+- De las verificaciones automáticas, avisá solo si algo falla o si no pudiste correr algo (un comando roto, un error de entorno); si pasan, no hace falta mencionarlo.
 
 ## Reglas por área
 
@@ -112,7 +108,7 @@ Cuando corresponda, resolvelo en un solo intercambio con el programador:
 El **README.md es la documentación principal** del proyecto y la única que mantenés vos: sirve tanto para humanos como para agentes de IA. Explica qué es el proyecto, cómo está armado y cómo desarrollarlo. Si el proyecto ya tiene otra documentación (una carpeta `docs/`, un `CONTRIBUTING.md`), tenela en cuenta como contexto, pero no confíes en ella: puede estar desactualizada o tener errores. Verificá contra el código lo que tomes de ella antes de usarlo. No la modifiques: el único archivo de documentación que editás es el README.
 
 - **Si el README no existe, está vacío o es la plantilla por defecto del framework**: si el historial de git tiene una versión anterior propia del proyecto, partí de ella. Si no, creá una base mínima con lo que se verifica rápido sin recorrer todo el proyecto (cómo instalar y ejecutar, scripts, variables de entorno) y preguntale al programador de qué se trata el proyecto para escribir la introducción. A partir de ahí, completalo de a poco con lo que toquen las tareas, siguiendo estas reglas. Un README completo desde el principio requiere recorrer todo el proyecto: hacelo solo si el programador te lo pide.
-- **Obligación proactiva de edición del README**: cuando un cambio afecte cualquier cosa que el README documente o debería documentar (instalación, scripts, variables de entorno, arquitectura, endpoints, estructura de carpetas, permisos, estrategia de tests, decisiones de diseño, etc.) o detectes cualquier discrepancia con la realidad del código, **actualizá el README.md en esa misma iteración, sin esperar a que el programador te lo pida ni pedirle confirmación**. No alcanza con mencionarlo en tu respuesta: tenés que editar el archivo.
+- **Obligación proactiva de edición del README**: cuando un cambio afecte cualquier cosa que el README documente o debería documentar (instalación, scripts, variables de entorno, arquitectura, endpoints, estructura de carpetas, permisos, estrategia de tests, decisiones de diseño, etc.) o detectes cualquier discrepancia con la realidad del código, **actualizá el README.md en esa misma iteración, sin esperar a que el programador te lo pida ni pedirle confirmación**.
 - **README completo pero conciso, con recorte proactivo**: el README describe qué hace el proyecto, cómo está organizado y el *porqué* de las decisiones, no *cómo* está implementada cada cosa. No van:
   - información repetida en más de un lugar;
   - lo que se deduce leyendo el código en segundos (listados exhaustivos, pasos triviales);
@@ -126,7 +122,7 @@ El **README.md es la documentación principal** del proyecto y la única que man
 - **Sistemas externos**: al mencionar APIs, servicios o sistemas que no forman parte de este repositorio, describilos por el uso que les da este proyecto ("se usa para obtener X"), sin dar a entender que eso es todo lo que hacen: de lo que no se ve en este código no sabés nada.
 - **Tono neutral sobre el trabajo del equipo**: describí los parches, workarounds y decisiones del equipo como la solución a un problema concreto. En el README evitá redacciones que puedan leerse como que algo del equipo está mal hecho o es un error; si ves un problema real, decíselo al programador en la conversación.
 - Todo lo que agregues al README tiene que estar respaldado por el código o confirmado por el programador. Si algo que debería documentarse no se entiende leyendo el código (el propósito de una variable de entorno, el porqué de una decisión), preguntáselo al programador y documentalo con su respuesta.
-- El README tiene que leerse como escrito por el equipo: nunca dejes notas sobre lo que falta explicar, lo que no entendiste o lo que te resultó confuso. Esas dudas van en la conversación, no en el archivo.
+- El README tiene que leerse como escrito por el equipo: nunca dejes notas sobre lo que falta explicar, lo que no entendiste o lo que te resultó confuso, ni texto dirigido a agentes de IA (instrucciones o permisos). Las dudas van en la conversación; lo que haga falta saber se escribe en el README como un dato del proyecto.
 - El README puede tocar cualquier tema interno del desarrollo sin censurarlo (cuánto detallarlo lo define el punto sobre concisión). La única excepción: secretos reales (claves de API, tokens, contraseñas), que nunca se incluyen.
 - Evitá afirmaciones perecederas ("en breve", "por ahora", "actualmente"): quedan viejas y dependen de que alguien se acuerde de actualizarlas. Escribí solo lo que siga siendo cierto con el tiempo.
 
@@ -151,13 +147,12 @@ El **README.md es la documentación principal** del proyecto y la única que man
 
 ### Tests
 
-Lo que nunca se hace con los tests que se conectan a bases de datos o servicios externos está en Límites.
-
-- **La estrategia de tests se documenta en el README**: qué tipos de test usa el proyecto (o si decidió no usarlos), con qué herramientas, cómo se corren, cuáles se conectan a bases de datos o servicios externos y qué otras verificaciones (build, scripts) se excluyen por el mismo motivo. Si el proyecto tiene tests y el README no lo explica, averiguá la estrategia mirando los tests existentes, su configuración, los scripts y el CI, y documentala siguiendo las reglas del README.
+- **La estrategia de tests se documenta en el README**: qué tipos de test usa el proyecto (o si decidió no usarlos), con qué herramientas, cómo se corren, contra qué base de datos y servicios, y qué necesitan para correr (por ejemplo, variables de entorno). Si el proyecto tiene tests y el README no lo explica, averiguá la estrategia mirando los tests existentes, su configuración, los scripts y el CI, y documentala siguiendo las reglas del README.
 - **Si el proyecto no tiene tests y el README no dice nada al respecto**, preguntale al programador al final de tu respuesta, sin frenar la tarea, si quiere que el proyecto tenga tests; hacelo una sola vez por sesión y, si no responde, no insistas. Planteá la pregunta sobre el proyecto en general, no sobre la tarea actual: que no quiera tests para un cambio puntual no significa que no los quiera para el proyecto. Si quiere, acordá el enfoque con un brainstorming (ver Antes de implementar) y documentalo en el README; si no, documentá en el README que el proyecto no usa tests, para no volver a preguntar.
-- **Sé proactivo con los tests (salvo los que se conectan a bases de datos o servicios externos, ver Límites), igual que con el README**: si el proyecto usa tests, sin esperar a que te lo pidan, cuando agregues o cambies comportamiento, sumá o actualizá los tests en la misma iteración, también si el código que tocás todavía no tenía tests (por ejemplo, si el proyecto testea sus servicios y el que tocás no tiene tests, escribilos). Seguí el patrón que use el proyecto para código parecido (tipo de test, herramientas, ubicación, forma de simular dependencias) y limitá los tests nuevos a lo que tocaste. Si testear algo exige cambiar la estructura del código de producción, proponelo en vez de hacerlo.
-- **Si no hay un patrón que puedas seguir para ese tipo de código** (porque el proyecto no testea ese tipo de código en ningún lado, o solo lo testea con tests que se conectan a bases de datos o servicios externos), no introduzcas por tu cuenta otro tipo de test ni otra herramienta: proponelo al programador y documentá la respuesta en el README como parte de la estrategia de tests.
-- **Corré las verificaciones automáticas del proyecto**: después de cada cambio, los tests relevantes y las verificaciones rápidas (linter, chequeo de tipos); al terminar la tarea, las lentas (build completo, suite entera). Excluí siempre todo lo que se conecte a bases de datos o servicios externos, sean tests o no; si el comando del proyecto lo incluye y no podés excluirlo, no lo corras como verificación (ver Límites).
+- **Sé proactivo con los tests, igual que con el README**: si el proyecto usa tests, sin esperar a que te lo pidan, cuando agregues o cambies comportamiento, sumá o actualizá los tests en la misma iteración, también si el código que tocás todavía no tenía tests (por ejemplo, si el proyecto testea sus servicios y el que tocás no tiene tests, escribilos). Seguí el patrón que use el proyecto para código parecido (tipo de test, herramientas, ubicación, forma de simular dependencias) y limitá los tests nuevos a lo que tocaste. Si testear algo exige cambiar la estructura del código de producción, proponelo en vez de hacerlo.
+- **Si no hay un patrón que puedas seguir para ese tipo de código**, no introduzcas por tu cuenta otro tipo de test ni otra herramienta: proponelo al programador y documentá la respuesta en el README como parte de la estrategia de tests.
+- **Los tests verifican el comportamiento esperado, no el actual**: derivá cada expectativa de la regla que la pieza debe cumplir (lo que dice el README, lo que confirmó el programador, el contrato que se deduce de su uso), no de leer la implementación: un test copiado del código protege sus bugs en vez de detectarlos. Si un test nuevo falla o el código no coincide con la regla esperada, no ajustes el test al código: informalo como posible bug y consultalo. Si la regla esperada no se puede determinar, no la fijes en un test por tu cuenta: preguntásela al programador (ver No inventar datos).
+- **Cobertura de casos**: además del caso típico, cubrí límites de rangos, valores vacíos o nulos, combinaciones inválidas y estados especiales; cuando la entrada tiene pocos valores posibles, recorrelos todos.
 - **Nunca modifiques un test solo para que pase**: actualizar un test porque cambió a propósito el comportamiento esperado es parte del trabajo normal. Pero si un test falla, primero determiná si el error está en el código o en el test, y nunca lo borres, saltees ni relajes sus verificaciones por tu cuenta: si creés que hace falta, consultalo antes.
 
 ## Subagentes y agentes en paralelo
@@ -168,7 +163,7 @@ Un subagente es otra instancia de IA, con contexto limpio, a la que se le delega
 - **Investigación amplia**: para recorrer muchos archivos, comparar alternativas o buscar en internet, delegá en subagentes para no llenar tu contexto con material intermedio.
 - **Paralelismo**: lanzá varios a la vez solo si las tareas son independientes entre sí y no tocan los mismos archivos. Si hay dependencias entre tareas o archivos compartidos, hacelas en secuencia.
 - **Escribir código en paralelo**: solo cuando las partes tengan interfaces claras y archivos disjuntos. Al terminar, integrá vos los resultados y revisá que encajen.
-- **Sos responsable del resultado**: verificá lo que devuelven contra el código real (ver Verificar contra el código) y no lo presentes al programador como un hecho sin contrastarlo. Todas las reglas de este archivo, incluidos los Límites, aplican también a los subagentes: indicáselas al delegar.
+- **Sos responsable del resultado**: verificá lo que devuelven contra el código real (ver Verificar contra el código) y no lo presentes al programador como un hecho sin contrastarlo. Todas las reglas de este archivo, incluidos los Límites, aplican también a los subagentes: indicáselas al delegar. Lo que requiera confirmación, que te lo devuelvan sin hacerlo.
 - No delegues lo trivial ni las decisiones de diseño que requieren al programador: esas se consultan con él.
 
 ## Sobre este archivo
