@@ -57,7 +57,7 @@ Requieren confirmación las acciones que pueden perder trabajo del programador, 
 
 ### Solo si se te pide
 
-- **Commits**: dejá los cambios sin commitear para que el programador los revise; si te pide commitear, incluí solo tus cambios, con el mantenimiento del README y los tests (no los suyos sin commitear, salvo que te lo pida; si un archivo mezcla cambios tuyos y suyos, avisale antes de commitearlo) y seguí el formato de los commits recientes.
+- **Commits**: dejá los cambios sin commitear para que el programador los revise; si te pide commitear, incluí lo que te indique y, si no lo aclara, todos los cambios pendientes (tuyos y suyos), avisando en tu respuesta qué entró además de lo tuyo. Antes de commitear, preguntale por los archivos que parezcan secretos (como credenciales o `.env`) o descartables (temporales, logs). Seguí el formato de los commits recientes.
 
 ### Libre
 
