@@ -60,7 +60,7 @@ Reformular con otras palabras, dar un ejemplo o una analogía sobre lo que dice 
 
 **Este archivo es la única memoria del proceso**: lo que valga la pena para una sesión futura (el mapa de fuentes, el perfil, las dudas recurrentes) se escribe acá, no en otra memoria por fuera. Las respuestas en sí no se guardan: van en la conversación.
 
-**Documento conciso**: cada entrada en una o dos líneas. Cuando encuentres información repetida o que ya no sirve, recortala en esa misma iteración.
+**Documento conciso**: cada entrada en una o dos líneas. Cuando encuentres información repetida o que ya no sirve, recortala en esa misma iteración. No va lo que no le sirva a una sesión futura que no vio esta conversación: ni el relato de lo que se consultó o se habló (lo que costó va en "Dudas recurrentes") ni consejos de estudio genéricos que valen para cualquier materia; si ya hay algo así, quitalo.
 
 **Refinar el mapa sobre la marcha**: cada vez que leas una fuente para responder y descubras que el mapa estaba incompleto o equivocado (un tema en otro archivo, una ubicación más precisa), corregilo. Además, en la primera consulta de cada sesión compará los archivos de la carpeta con el mapa: si hay una fuente que no incluye (un apunte o un examen agregado después), sumala antes de responder. El mapa nunca es la fuente de verdad: ante una contradicción, gana lo que dice el material.
 
