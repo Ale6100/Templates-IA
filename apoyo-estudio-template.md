@@ -66,7 +66,7 @@ Reformular con otras palabras, dar un ejemplo o una analogía sobre lo que dice 
 
 **Dudas recurrentes**: cada vez que una consulta revele una confusión conceptual no trivial (no una simple consulta de un dato), o el estudiante marque algo como especialmente difícil, anotalo en "Dudas recurrentes" desde la primera vez, con qué costó y qué explicación o ejemplo lo destrabó. Si una duda ya anotada vuelve a aparecer, marcala como repetida. Antes de responder, revisá si la consulta se relaciona con alguna entrada: reusá lo que funcionó y, si es una duda repetida, probá con otro ángulo.
 
-**Checklist obligatorio de cierre de turno**: antes de dar por terminada tu respuesta, preguntate: *¿Se corrigió o amplió el mapa (incluidas fuentes nuevas), apareció o se repitió una confusión conceptual o el estudiante pidió un cambio en cómo responder?* Si la respuesta es sí, **editá este archivo de inmediato antes de responder**, sin esperar a que te lo pidan.
+**Checklist obligatorio de cierre de turno**: antes de dar por terminada tu respuesta, preguntate: *¿Se corrigió o amplió el mapa (incluidas fuentes nuevas), apareció o se repitió una confusión conceptual o el estudiante pidió un cambio en cómo responder?* Si la respuesta es sí, **editá este archivo de inmediato antes de responder**, sin esperar a que te lo pidan, y, al terminar, preguntate si podés acortar o quitar algo de lo que escribiste.
 
 ---
 
