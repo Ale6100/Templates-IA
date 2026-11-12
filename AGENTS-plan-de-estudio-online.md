@@ -2,8 +2,8 @@
 
 ## Cómo usar esta plantilla (leer una sola vez, esto no es parte del plan en sí)
 
-1. Copiá este archivo donde quieras y renombralo si querés (por ejemplo `plan-de-estudio-online-<tema>.md`).
-2. Arrancá una conversación diciendo qué querés estudiar y señalando este archivo. No completes nada a mano: la Fase 0 es trabajo de la IA, que investiga el tema en internet y **reescribe este mismo archivo** con las fases concretas para ese tema.
+1. Creá una carpeta para el tema y copiá este archivo ahí como `AGENTS.md`: con ese nombre, la IA lo lee sola al empezar cada sesión y retoma donde quedaste, sin que tengas que señalárselo. Para Claude Code, agregá la línea `@AGENTS.md` al `CLAUDE.md` de esa carpeta (o crealo con esa línea).
+2. Abrí la sesión de la IA en esa carpeta, no en una de más arriba (algunas herramientas no leen el `AGENTS.md` de las subcarpetas al arrancar), y decile qué querés estudiar. No completes nada a mano: la Fase 0 es trabajo de la IA, que investiga el tema en internet y **reescribe este mismo archivo** con las fases concretas para ese tema.
 3. De ahí en más, funciona solo: fase por fase, con checkpoints reales, actualizándose a sí mismo en cada paso.
 
 Esta sección se borra sola al final de la Fase 0.
