@@ -95,7 +95,7 @@ Si trabajás sin que el programador pueda responder (en segundo plano, en la nub
 - **Síntoma real observado**:
 - **Comportamiento esperado** (confirmado, no asumido):
 - **Pasos para reproducirlo de forma confiable**:
-- **Contexto relevante** (versión, rama, entorno, desde cuándo pasa si se sabe, si es intermitente o consistente):
+- **Contexto relevante** (versión, rama, entorno, desde cuándo pasa si se sabe, como fecha absoluta y no "desde ayer", tomando la actual del entorno y no de tu memoria, si es intermitente o consistente):
 - **Preferencias del programador** (cómo quiere trabajar; se suman a medida que aparecen):
 
 ---
