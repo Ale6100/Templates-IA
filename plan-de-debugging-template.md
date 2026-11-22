@@ -3,7 +3,7 @@
 ## Cómo usar esta plantilla (leer una sola vez, esto no es parte del plan en sí)
 
 1. Copiá este archivo a la raíz del proyecto cuando te encuentres con un bug que no se resuelve mirándolo dos minutos — no hace falta para cualquier error trivial. Renombralo según el bug (por ejemplo `plan-de-debugging-<bug>.md`) para no pisar una bitácora anterior.
-2. Contale a la IA el síntoma real que estás viendo y señalá este archivo. En las sesiones siguientes no hace falta señalarlo si el proyecto usa el `AGENTS.md` de la plantilla: la IA busca sola las bitácoras sin resolver.
+2. Contale a la IA el síntoma real que estás viendo y señalá este archivo; en las sesiones siguientes, volvé a señalárselo.
 3. La IA arranca por la Fase 0 (reconocimiento) y va llenando el resto del documento a medida que investiga.
 
 Esta sección se borra sola al final de la Fase 0.
